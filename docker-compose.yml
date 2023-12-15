@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  calculator-api:
+    build:
+      context: https://github.com/pwojcieszuk/calculator-api.git
+    ports:
+      - "3000:3000"
+    environment:
+      - CORS_ORIGIN=http://localhost:3001
+
+  calculator-frontend:
+    build:
+      context: https://github.com/pwojcieszuk/calculator.git
+    ports:
+      - "3001:3000"
+    environment:
+      - NEXT_PUBLIC_CALCULATOR_API_URL=http://localhost:3000
